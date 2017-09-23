@@ -208,7 +208,8 @@ class ProfilesSpawner(WrapSpawner):
         try:
             self.child_profile = state['profile']
         except KeyError:
-            raise KeyError('jupyterhub database might be outdated, please reset it, in the default configuration, just delete jupyterhub.sqlite')
+            self.log.info('jupyterhub database might be outdated, please reset it, in the default configuration, just delete jupyterhub.sqlite')
+            self.child_profile = ""
         self.select_profile(self.child_profile)
 
     def get_state(self):
